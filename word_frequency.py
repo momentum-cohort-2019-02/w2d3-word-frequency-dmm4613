@@ -27,7 +27,7 @@ def normalize_text(text):
 def print_word_freq(filename):
     """Read in `file` and print out the frequency of words in that file."""
 
-#call the file
+    #call the file
     with open(filename) as file:
         text = file.read()
 
@@ -42,6 +42,7 @@ def print_word_freq(filename):
     words = word_freq(words)
     #changes the dictionary into a list. words.get calls the value of each key of the dictionary. Does so in reverse order
    
+   # sorted will take the list called and make sure they are in order. words.get is a method that gets the value of the key of words. Reverse = True just checks to see if you want to sort backwards. It will swap the values in the list until they are ordered. Also creates a new list instead of a dictionary
     for word in sorted(words, key=words.get, reverse=True):
         #assign freq to the value of the key
         freq = words[word]
@@ -52,16 +53,9 @@ def print_word_freq(filename):
             #each pass the variable symbolize_freq will gain another '*'
             symbolize_freq += '*'
             index += 1
-        #each {} is formatted to output a variable. They are assigned at the end of the line and work in order.    
-        print ("'{}' | {} {} times".format(word, symbolize_freq, freq))
+        #each {} is formatted to output a variable. They are assigned inside of each {} with a variable. The 'f' before each string calls this formatting. rjust(20) will adjust that string to the right by 20 characters.   
+        print (f"'{word}'".rjust(20) + " | " + f"{symbolize_freq} {freq} times")
 
-    # for word, freq in words.items():
-    #     symbolize_freq = ''
-    #     index = 0
-    #     while index < freq:
-    #         symbolize_freq += '*'
-    #         index += 1
-    #     print ("'{}' | {} {} times".format(word, symbolize_freq, freq))
 
 def word_freq(a_list):
     """Given a list, find all the times a word appears"""
